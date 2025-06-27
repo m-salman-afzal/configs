@@ -1,27 +1,64 @@
 {
+    "name": "nomac",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "prepare": "husky",
+        "dev": "next dev --turbopack --port 3000",
+        "build": "rm -rf .next &&  next build",
+        "start": "next start"
+    },
+    "packageManager": "pnpm@10.12.3",
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild",
+            "sharp"
+        ]
+    },
     "lint-staged": {
         "**/*": [
             "prettier --write",
             "eslint --fix"
         ]
     },
+    "dependencies": {
+        "@ant-design/cssinjs": "1.23.0",
+        "@ant-design/icons": "5.6.1",
+        "@ant-design/nextjs-registry": "1.0.2",
+        "@ant-design/v5-patch-for-react-19": "1.0.3",
+        "@tanstack/react-query": "5.81.2",
+        "antd": "5.26.2",
+        "leaflet": "1.9.4",
+        "next": "15.3.4",
+        "react": "19.1.0",
+        "react-dom": "19.1.0",
+        "react-leaflet": "5.0.0",
+        "recharts": "3.0.0"
+    },
     "devDependencies": {
-        "@eslint/js": "9.25.1",
-        "@ianvs/prettier-plugin-sort-imports": "4.4.1",
-        "@next/eslint-plugin-next": "15.3.1",
-        "eslint": "9.25.1",
-        "eslint-config-prettier": "10.1.2",
-        "eslint-plugin-prettier": "5.2.6",
+        "@eslint/js": "9.29.0",
+        "@ianvs/prettier-plugin-sort-imports": "4.4.2",
+        "@next/eslint-plugin-next": "15.3.4",
+        "@svgr/webpack": "8.1.0",
+        "@tanstack/eslint-plugin-query": "5.81.2",
+        "@tanstack/react-query-devtools": "5.81.2",
+        "@types/leaflet": "1.9.19",
+        "@types/node": "24.0.4",
+        "@types/react": "19.1.8",
+        "@types/react-dom": "19.1.6",
+        "eslint": "9.29.0",
+        "eslint-config-prettier": "10.1.5",
+        "eslint-plugin-prettier": "5.5.1",
         "eslint-plugin-react": "7.37.5",
         "eslint-plugin-react-hooks": "5.2.0",
         "eslint-plugin-react-refresh": "0.4.20",
-        "globals": "16.0.0",
+        "globals": "16.2.0",
         "husky": "9.1.7",
         "jiti": "2.4.2",
-        "lint-staged": "15.5.1",
-        "prettier": "3.2.5",
-        "typescript-eslint": "8.31.0"
-    },
-   
-    
+        "lint-staged": "16.1.2",
+        "prettier": "3.6.1",
+        "typescript": "5.8.3",
+        "typescript-eslint": "8.35.0",
+        "url-loader": "4.1.1"
+    }
 }
