@@ -11,6 +11,7 @@ const common: NextConfig = {
         domains: ["storage.googleapis.com"]
     }
 };
+
 const devConfig: NextConfig = {
     ...common,
 
@@ -26,6 +27,10 @@ const devConfig: NextConfig = {
 
 const prodConfig: NextConfig = {
     ...common,
+    compiler: {
+        ...common.compiler,
+        removeConsole: true
+    },
     webpack: (config) => {
         config.module.rules.push({
             test: /\.svg$/,
