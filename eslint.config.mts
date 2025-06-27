@@ -1,5 +1,6 @@
 import js from "@eslint/js";
 import eslintNext from "@next/eslint-plugin-next";
+import pluginQuery from "@tanstack/eslint-plugin-query";
 import pluginPrettier from "eslint-plugin-prettier/recommended";
 import eslintReact from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -12,7 +13,7 @@ export default tseslint.config(
     {
         extends: [js.configs.recommended, ...tseslint.configs.recommended, pluginPrettier],
         files: ["**/*.{ts,tsx}"],
-        ignores: ["**/*.woff", ".turbo", "styled-system", "node_modules", ".prettierignore", "apps/web/public"],
+        ignores: ["**/*.woff", ".turbo", "node_modules", ".prettierignore", "./public", ".next"],
         languageOptions: {
             ecmaVersion: "latest",
             globals: globals.browser
@@ -21,12 +22,14 @@ export default tseslint.config(
             "react-hooks": reactHooks,
             "react-refresh": reactRefresh,
             react: eslintReact,
-            "@next/next": eslintNext
+            "@next/next": eslintNext,
+            "@tanstack/query": pluginQuery
         },
         rules: {
             ...reactHooks.configs.recommended.rules,
             ...eslintReact.configs.recommended.rules,
-            ...(eslintNext.configs.recommended.rules as Record<string, unknown>),
+            ...eslintNext.configs.recommended.rules,
+            ...pluginQuery.configs.recommended.rules,
             "react-refresh/only-export-components": ["warn", {allowConstantExport: true}],
             "no-console": ["warn", {allow: ["error"]}],
             "react-hooks/exhaustive-deps": "off",
